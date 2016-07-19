@@ -9,62 +9,21 @@ let $ = require('jquery'),
 // DB interaction using Firebase REST API
 // ****************************************
 
-function getSongs(callback) {
+function getForecasts() {
+
+  return new Promise(function(resolve, reject) {
+
+    $.ajax({
+      url: `http://api.wunderground.com/api/d4fce7fe5acf4720/forecast/forecast/q/37167.json`
+    }).done(function(forecastData) {
+      resolve(forecastData);
+    });
+
+  });
 
 }
 
-function addSong(songFormObj) {
 
-}
 
-function deleteSong(songId) {
 
-}
-
-function getSong(songId) {
-
-}
-
-function editSong(songFormObj, songId) {
-
-}
-
-module.exports = {
-  getSongs,
-  addSong,
-  getSong,
-  deleteSong,
-  editSong
-};
-
-// ****************************************
-// DB interaction using Firebase SDK
-// ****************************************
-
-// function getSongs(callback) {
-
-// }
-
-// function addSong(newSong) {
-
-// }
-
-// function deleteSong(songId) {
-
-// }
-
-// function getSong(songId) {
-
-// }
-
-// function editSong(songFormObj, songId) {
-
-// }
-
-// module.exports = {
-//   getSongs,
-//   addSong,
-//   getSong,
-//   deleteSong,
-//   editSong
-// };
+module.exports = { getForecasts };
